@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "940015812588",
+    "project_id": "u-learn-023ffed",
+    "storage_bucket": "u-learn-023ffed.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940015812588:android:842411ae2ab2b8efbb4ac9",
+        "android_client_info": {
+          "package_name": "com.kritika.u_learn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9FWAbtAED_P1UR_Eyricz4RD0mD9X9Tg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
