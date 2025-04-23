@@ -10,8 +10,14 @@ import 'package:u_learn/pages/sign_in/sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_blocs.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() async{
+void main() async {
+  try {
+    await dotenv.load();
+  } catch (e) {
+    print("Warning: .env file not found. Using default config.");
+  }
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());

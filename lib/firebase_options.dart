@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -49,20 +50,20 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA9FWAbtAED_P1UR_Eyricz4RD0mD9X9Tg',
-    appId: '1:940015812588:android:842411ae2ab2b8efbb4ac9',
-    messagingSenderId: '940015812588',
-    projectId: 'u-learn-023ffed',
-    storageBucket: 'u-learn-023ffed.firebasestorage.app',
+  static  FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_ANDROID_API_KEY']!,
+    appId: dotenv.env['FIREBASE_ANDROID_APP_ID']!,
+    messagingSenderId: dotenv.env['FIREBASE_ANDROID_MESSAGING_SENDER_ID']!,
+    projectId: dotenv.env['FIREBASE_ANDROID_PROJECT_ID']!,
+    storageBucket: dotenv.env['FIREBASE_ANDROID_STORAGE_BUCKET']!,
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBwXRR-DAAX8m6WrWkh4779pvCZfNOjsBo',
-    appId: '1:940015812588:ios:c79912a2b3718405bb4ac9',
-    messagingSenderId: '940015812588',
-    projectId: 'u-learn-023ffed',
-    storageBucket: 'u-learn-023ffed.firebasestorage.app',
-    iosBundleId: 'com.kritika.uLearn',
+  static  FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY']!,
+    appId: dotenv.env['FIREBASE_IOS_APP_ID']!,
+    messagingSenderId: dotenv.env['FIREBASE_IOS_MESSAGING_SENDER_ID']!,
+    projectId: dotenv.env['FIREBASE_IOS_PROJECT_ID']!,
+    storageBucket: dotenv.env['FIREBASE_IOS_STORAGE_BUCKET']!,
+    iosBundleId: dotenv.env['FIREBASE_IOS_BUNDLE_ID']!,
   );
 }

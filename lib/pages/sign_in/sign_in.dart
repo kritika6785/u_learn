@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:u_learn/pages/sign_in/bloc/signin_states.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_events.dart';
-
+import 'package:u_learn/pages/sign_in/sign_in_controller.dart';
 
 
 class SignIn extends StatefulWidget {
@@ -47,8 +47,11 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                     forgotPassword('Forgot password?'),
-                    buildLoginAndRegButton('Log In', 'login'),
-                    buildLoginAndRegButton('Sign Up', 'register'),
+                    buildLoginAndRegButton('Log In', 'login',(){
+                      print('object');
+                    SignInController(context: context).handleSignIn('email');
+                    }),
+                    buildLoginAndRegButton('Sign Up', 'register',(){}),
                   ],
                 )
             )
