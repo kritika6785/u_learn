@@ -16,10 +16,10 @@ class SignInController {
         String emailAddress = state.email;
         String password = state.password;
         if(emailAddress.isEmpty){
-         print("emailAddress is empty.");
+          toastInfo(msg:"emailAddress is empty.");
         }
         if(password.isEmpty){
-          print("password is empty.");
+          toastInfo(msg:"password is empty.");
         }
         try {
           print("email is $emailAddress");
@@ -31,6 +31,7 @@ class SignInController {
 
           }
           if(!credential.user!.emailVerified){
+          //  credential.user.sendEmailVerification();
             toastInfo(msg: 'User is not verified.');
           }
           var user = credential.user;

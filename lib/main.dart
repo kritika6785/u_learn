@@ -11,6 +11,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:u_learn/pages/bloc_providers.dart';
+import 'package:u_learn/pages/register/register.dart';
+import 'package:u_learn/pages/sign_in/widgets/sign_in_widget.dart';
+
 
 void main() async {
   try {
@@ -29,17 +33,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider(lazy:false, create: (context)=> WelcomeBloc(),),
-      BlocProvider(lazy:false, create: (context)=> AppBloc(),),
-      BlocProvider( create: (context)=> SignInBloc(),),
-
-    ],
+    return MultiBlocProvider(providers: AppBlocProviders.allBlocProviders,
     child: ScreenUtilInit(builder: (context, widget)=> MaterialApp(
       debugShowCheckedModeBanner:false,
       routes:{
         "myHomePage":(context)=>MyHomePage(),
         "sign-in":(context)=>SignIn(),
+        "register":(context)=>Register()
       },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -69,8 +69,7 @@ class MyHomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const Text('You have pushed the button this many times:'),
-              Text(
-                "${BlocProvider.of<AppBloc>(context).state.counter}",
+              Text("${BlocProvider.of<AppBloc>(context).state.counter}",
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ],
@@ -98,8 +97,8 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-
 // TODO: *****Bloc*****
+
 // class MyHomePage extends StatefulWidget {
 //   const MyHomePage({super.key, required this.title});
 //
