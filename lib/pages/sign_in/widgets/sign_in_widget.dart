@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:u_learn/common/values/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar(String appBarText) {
   return AppBar(
     backgroundColor: Colors.white,
     bottom: PreferredSize(
@@ -14,7 +14,7 @@ AppBar buildAppBar() {
     ),
     centerTitle: true,
     title: Text(
-      "Log In",
+      appBarText,
       style: TextStyle(
         color: AppColors.primaryText,
         fontSize: 16.sp,
@@ -47,12 +47,16 @@ Widget buildThirdPartyLogin() {
 }
 
 Widget reusableText(text) {
-  return Text(
-    text,
-    style: TextStyle(
-      fontSize: 15.sp,
-      color: AppColors.primaryThreeElementText,
-      fontWeight: FontWeight.w500,
+  return Container(
+    alignment: Alignment.center,
+    child:  Text(
+      text,
+      style: TextStyle(
+        fontSize: 15.sp,
+        color: AppColors.primaryThreeElementText,
+        fontWeight: FontWeight.w500,
+      ),
+      textAlign: TextAlign.center,
     ),
   );
 }
