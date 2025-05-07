@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:u_learn/pages/sign_in/widgets/sign_in_widget.dart';
 import 'package:u_learn/pages/register/bloc/register_bloc.dart';
+import 'package:u_learn/pages/register/bloc/register_states.dart';
+import 'package:u_learn/pages/register/bloc/register_events.dart';
+import 'package:u_learn/pages/register/register_controller.dart';
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -49,7 +52,11 @@ class _RegisterState extends State<Register> {
                       ),
 
                       buildLoginAndRegButton('Sign Up', 'register',() {
-                        Navigator.of(context).pushNamed("register");  }),
+                     //  Navigator.of(context).pushNamed("register");
+                       RegisterController(context).handleEmailRegister();
+
+                      }
+                      ),
 
                     ],
                   ) ,

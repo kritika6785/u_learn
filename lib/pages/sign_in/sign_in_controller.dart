@@ -26,6 +26,9 @@ class SignInController {
           print("password  is $password");
           final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
               email: emailAddress, password: password);
+          if(credential.user != null){
+            Navigator.of(context).pushNamed("myHomePage");  }
+
           if(credential.user == null){
             toastInfo(msg: 'You need to fill in email address.');
 

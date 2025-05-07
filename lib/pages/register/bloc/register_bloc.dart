@@ -2,12 +2,12 @@ import 'package:bloc/bloc.dart';
 import 'package:u_learn/pages/register/bloc/register_events.dart';
 import 'package:u_learn/pages/register/bloc/register_states.dart';
 class RegisterBloc extends Bloc<RegisterEvent, RegisterStates>{
-RegisterBloc():super(RegisterStates(){
-  on<UserNameEvent>(_userNameEvent);
-  on<EmailEvent>((event, emit) => _emailEvent(event, emit));
-  on<PasswordEvent>(_passwordEvent);
-  on<RePasswordEvent>(_re_passwordEvent);
-});
+RegisterBloc():super(RegisterStates()){
+  on<UserNameEvent>((event, emit)=>_userNameEvent(event, emit));
+  on<EmailEvent>((event, emit)=>_emailEvent(event, emit));
+  on<PasswordEvent>((event, emit)=>_passwordEvent(event, emit));
+  on<RePasswordEvent>((event, emit)=>_re_passwordEvent(event, emit));
+}
 void _userNameEvent(UserNameEvent event, Emitter<RegisterStates> emit){
   emit(state.copyWith(username:event.username));
 }

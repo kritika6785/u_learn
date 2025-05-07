@@ -14,6 +14,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:u_learn/pages/bloc_providers.dart';
 import 'package:u_learn/pages/register/register.dart';
 import 'package:u_learn/pages/sign_in/widgets/sign_in_widget.dart';
+import 'package:u_learn/pages/application/application_page.dart';
 
 
 void main() async {
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
     child: ScreenUtilInit(builder: (context, widget)=> MaterialApp(
       debugShowCheckedModeBanner:false,
       routes:{
-        "myHomePage":(context)=>MyHomePage(),
+        "myHomePage":(context)=>ApplicationPage(),
         "sign-in":(context)=>SignIn(),
         "register":(context)=>Register()
       },
