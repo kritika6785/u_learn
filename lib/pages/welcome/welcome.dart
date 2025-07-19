@@ -11,7 +11,7 @@ import 'package:u_learn/common/values/colors.dart';
 
 
 class Welcome extends StatefulWidget {
-  const Welcome({super.key});
+   Welcome({super.key});
 
   @override
   State<Welcome> createState() => _WelcomeState();
@@ -21,68 +21,64 @@ class _WelcomeState extends State<Welcome> {
   PageController pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Scaffold(
-        body: BlocBuilder<WelcomeBloc, WelcomeState>(builder: (context, state){
-        return Container(
-          margin: EdgeInsets.only(top: 34.h),
-          width: 345.w,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              PageView(
-                controller: pageController,
-                onPageChanged: (index){
-                  state.page = index;
-                  BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
-                },
-                children: [
-                  _Page(
-                      1,
-                      context,
-                      "First See Learning",
-                      "Forgot about a for of paper all knowledge in one learning",
-                      "assets/images/reading.png",
-                      "Next"),
-                  _Page(
-                      2,
-                      context,
-                      "Connect with Everyone",
-                      "Always keep in touch with your tutor & friend. Let's get connected",
-                      "assets/images/boy.png",
-                      "Next"),
-                  _Page(
-                      3,
-                      context,
-                      "Always Fascinated Learning",
-                      "Anywhere, anytime. The time is at your discretion so study whenever you want.",
-                      "assets/images/man.png",
-                      "Get Started"),
-                ],
-              ),
-              Positioned(
-                  bottom: 50.h,
-                  child: DotsIndicator(
-                    position: state.page!.toDouble(),
-                    dotsCount: 3,
-                    decorator: DotsDecorator(
-                        color: AppColors.primaryFourElementText,
-                        size: const Size.square(8.0),
-                        activeSize: Size(18, 8),
-                        activeColor: AppColors.primaryElement,
-                        activeShape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0)
-                        )
-                    ),
-                  ))
-            ],
-          ),
+    return
+      BlocBuilder<WelcomeBloc, WelcomeState>(builder: (context, state){
+        return Scaffold(
+      body: Container(
+        margin: EdgeInsets.only(top: 34.h),
+        width: 345.w,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            PageView(
+              controller: pageController,
+              onPageChanged: (index){
+                state.page = index;
+                BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
+              },
+              children: [
+                _Page(
+                    1,
+                    context,
+                    "First See Learning",
+                    "Forgot about a for of paper all knowledge in one learning",
+                    "assets/images/reading.png",
+                    "Next"),
+                _Page(
+                    2,
+                    context,
+                    "Connect with Everyone",
+                    "Always keep in touch with your tutor & friend. Let's get connected",
+                    "assets/images/boy.png",
+                    "Next"),
+                _Page(
+                    3,
+                    context,
+                    "Always Fascinated Learning",
+                    "Anywhere, anytime. The time is at your discretion so study whenever you want.",
+                    "assets/images/man.png",
+                    "Get Started"),
+              ],
+            ),
+            Positioned(
+                bottom: 50.h,
+                child: DotsIndicator(
+                  position: state.page!.toDouble(),
+                  dotsCount: 3,
+                  decorator: DotsDecorator(
+                      color: AppColors.primaryFourElementText,
+                      size: const Size.square(8.0),
+                      activeSize: Size(18, 8),
+                      activeColor: AppColors.primaryElement,
+                      activeShape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0)
+                      )
+                  ),
+                ))
+          ],
+        ),
+      ));},
         );
-    },
-      ),
-    )
-    );
   }
   Widget _Page (int index,
       BuildContext context,
@@ -126,7 +122,7 @@ class _WelcomeState extends State<Welcome> {
              }
              else {
               // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MyHomePage()));
-               Navigator.pushNamedAndRemoveUntil(context, "sign-in", (route)=>false);
+               Navigator.pushNamedAndRemoveUntil(context, "/sign-in", (route)=>false);
              }
            },
            child:  Container(

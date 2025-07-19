@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:u_learn/app_states.dart';
 import 'package:u_learn/app_events.dart';
 import 'package:u_learn/app_blocs.dart';
+import 'package:u_learn/common/routes/pages.dart';
 import 'package:u_learn/pages/welcome/welcome.dart';
 import 'package:u_learn/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,18 +35,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: AppBlocProviders.allBlocProviders,
+    return MultiBlocProvider(
+        providers: [...AppPages.allBlocProviders(context)],
     child: ScreenUtilInit(builder: (context, widget)=> MaterialApp(
       debugShowCheckedModeBanner:false,
-      routes:{
-        "myHomePage":(context)=>ApplicationPage(),
-        "sign-in":(context)=>SignIn(),
-        "register":(context)=>Register()
-      },
+      onGenerateRoute: AppPages.generateRouteSettings,
+      // routes:{
+      //   "myHomePage":(context)=>ApplicationPage(),
+      //   "sign-in":(context)=>SignIn(),
+      //   "register":(context)=>Register()
+      // },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Welcome(),
+    //  home: const Welcome(),
+      initialRoute: "/",
     ),)
     );
   }

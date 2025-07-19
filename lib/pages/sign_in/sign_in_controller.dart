@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:u_learn/common/widgets/flutter_toast.dart';
+
+import '../application/application_page.dart';
 class SignInController {
   // since we are using bloc we need our own context
   final BuildContext context;
@@ -26,21 +28,24 @@ class SignInController {
           print("password  is $password");
           final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
               email: emailAddress, password: password);
-          if(credential.user != null){
-            Navigator.of(context).pushNamed("myHomePage");  }
+
 
           if(credential.user == null){
             toastInfo(msg: 'You need to fill in email address.');
 
           }
           if(!credential.user!.emailVerified){
-          //  credential.user.sendEmailVerification();
+           await credential.user!.sendEmailVerification();
             toastInfo(msg: 'User is not verified.');
           }
           var user = credential.user;
           if(user != null){
-
-
+            print("credential.user ${user}");
+          //  print("context.mounted ${context.mounted}");
+            if(context.mounted) {
+             // print("context.mounted ${context.mounted}");
+              Navigator.of(context).push( MaterialPageRoute(builder: (_) => ApplicationPage())) ;
+            }
           }else {
             toastInfo(msg: "You don/n't exist.");
           }
@@ -57,7 +62,10 @@ class SignInController {
 
         }
       }
+      // email end
     }
-    catch(r){}
+    catch(r) {
+      print(r);
+    }
   }
 }

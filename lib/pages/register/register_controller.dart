@@ -8,6 +8,7 @@ class RegisterController{
    const RegisterController(this.context);
 
    void handleEmailRegister() async {
+     //
      final state = context.read<RegisterBloc>().state;
      String username = state.username;
      String password = state.password;
